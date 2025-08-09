@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// Montserrat is very similar to Proxima Nova and freely available
+const montserrat = Montserrat({ 
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "900"], // Regular, Semibold, Bold, Black
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "V-Loop | Professional Video Editing Agency",
@@ -17,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${montserrat.variable} font-sans`}>{children}</body>
     </html>
   );
 }

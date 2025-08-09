@@ -11,6 +11,15 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'sans': ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        'heading': ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        'body': ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+      },
+      fontWeight: {
+        'semibold': '600',
+        'black': '900',
+      },
     },
   },
   plugins: [],
