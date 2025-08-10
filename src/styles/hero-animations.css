@@ -1,0 +1,54 @@
+/* HeroSection Animations */
+
+@keyframes particle-float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.2;
+  }
+  25% { 
+    transform: translateY(-10px) rotate(90deg); 
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 0.8;
+  }
+  75% { 
+    transform: translateY(-10px) rotate(270deg); 
+    opacity: 0.6;
+  }
+}
+
+@keyframes camera-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: drop-shadow(0 0 10px rgba(235, 149, 34, 0.3));
+  }
+  50% { 
+    transform: scale(1.05); 
+    filter: drop-shadow(0 0 20px rgba(235, 149, 34, 0.6));
+  }
+}
+
+@keyframes lens-reflection {
+  0%, 100% { 
+    opacity: 0; 
+    transform: translateX(-100%);
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateX(100%);
+  }
+}
+
+.animate-particle-float {
+  animation: particle-float 4s ease-in-out infinite;
+}
+
+.animate-camera-pulse {
+  animation: camera-pulse 3s ease-in-out infinite;
+}
+
+.animate-lens-reflection {
+  animation: lens-reflection 5s ease-in-out infinite;
+}
