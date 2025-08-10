@@ -1,0 +1,76 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Ethereal Wedding Dreams",
+      "description": "Capturing love in its purest form",
+      "category": "Wedding Photography",
+      "videoUrl": "/videos/wedding-1.mp4",
+      "thumbnailUrl": "/images/wedding-1-thumb.jpg",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Corporate Excellence",
+      "description": "Professional event documentation",
+      "category": "Event Coverage",
+      "videoUrl": "/videos/event-1.mp4",
+      "thumbnailUrl": "/images/event-1-thumb.jpg",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Portrait Mastery",
+      "description": "Individual stories told through lens",
+      "category": "Portrait Session",
+      "videoUrl": "/videos/portrait-1.mp4",
+      "thumbnailUrl": "/images/portrait-1-thumb.jpg",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Creative Vision",
+      "description": "Artistic expressions captured",
+      "category": "Creative Shoot",
+      "videoUrl": "/videos/creative-1.mp4",
+      "thumbnailUrl": "/images/creative-1-thumb.jpg",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "title": "Golden Hour Romance",
+      "description": "Sunset wedding ceremony",
+      "category": "Wedding Photography",
+      "videoUrl": "/videos/wedding-2.mp4",
+      "thumbnailUrl": "/images/wedding-2-thumb.jpg",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "Fashion Forward",
+      "description": "High-end fashion photography",
+      "category": "Portrait Session",
+      "videoUrl": "/videos/fashion-1.mp4",
+      "thumbnailUrl": "/images/fashion-1-thumb.jpg",
+      "featured": false
+    },
+    {
+      "id": 7,
+      "title": "Music Festival Vibes",
+      "description": "Energy and excitement captured",
+      "category": "Event Coverage",
+      "videoUrl": "/videos/festival-1.mp4",
+      "thumbnailUrl": "/images/festival-1-thumb.jpg",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "title": "Artistic Abstracts",
+      "description": "Creative conceptual photography",
+      "category": "Creative Shoot",
+      "videoUrl": "/videos/abstract-1.mp4",
+      "thumbnailUrl": "/images/abstract-1-thumb.jpg",
+      "featured": false
+    }
+  ]
+}
