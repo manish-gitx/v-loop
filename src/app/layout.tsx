@@ -10,9 +10,17 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "V-Loop | Professional Video Editing Agency",
+  title: "V-LOOP",
   description: "Transform your vision into stunning videos with V-Loop's professional video editing services. We specialize in creating compelling content that engages and converts.",
   keywords: "video editing, professional video services, video production, content creation, V-Loop",
+  icons: {
+    icon: [
+      { url: "/V-Loop White.png", type: "image/png" },
+      { url: "/V-Loop White.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/V-Loop White.png" }],
+    shortcut: ["/V-Loop White.png"],
+  },
 };
 
 export default function RootLayout({
