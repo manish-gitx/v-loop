@@ -23,6 +23,36 @@
       "title": "Creative Vision",
       "description": "Artistic expressions captured",
       "videoUrl": "/k2.mp4"
+    },
+    {
+      "id": 5,
+      "title": "Golden Hour Romance",
+      "description": "Sunset wedding ceremony",
+      "videoUrl": "/k2.mp4"
+    },
+    {
+      "id": 6,
+      "title": "Fashion Forward",
+      "description": "High-end fashion photography",
+      "videoUrl": "/k2.mp4"
+    },
+    {
+      "id": 7,
+      "title": "Music Festival Vibes",
+      "description": "Energy and excitement captured",
+      "videoUrl": "/k2.mp4"
+    },
+    {
+      "id": 8,
+      "title": "Artistic Abstracts",
+      "description": "Creative conceptual photography",
+      "videoUrl": "/k2.mp4"
+    },
+    {
+      "id": 9,
+      "title": "Urban Exploration",
+      "description": "City life through the lens",
+      "videoUrl": "/k2.mp4"
     }
   ]
 }

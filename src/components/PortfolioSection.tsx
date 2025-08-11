@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
 import portfolioData from '@/data/portfolio.json'
@@ -11,6 +11,65 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMutedMobile, setIsMutedMobile] = useState(true)
   const [activeAudioCard, setActiveAudioCard] = useState<number | null>(null)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(false)
+
+  const carouselRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const detectTouch = () => {
+      if (typeof window === 'undefined') return false
+      const isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches
+      const hasTouch = 'ontouchstart' in window || (navigator as any).maxTouchPoints > 0
+      return isCoarse || hasTouch
+    }
+    setIsTouchDevice(detectTouch())
+  }, [])
+
+  const updateScrollAffordances = () => {
+    const container = carouselRef.current
+    if (!container) return
+    const { scrollLeft, scrollWidth, clientWidth } = container
+    setCanScrollLeft(scrollLeft > 0)
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1)
+  }
+
+  useEffect(() => {
+    updateScrollAffordances()
+    const handleResize = () => updateScrollAffordances()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const scrollByOneCard = (direction: -1 | 1) => {
+    const container = carouselRef.current
+    if (!container) return
+
+    const children = Array.from(container.children) as HTMLElement[]
+    const firstChild = children[0]
+    const secondChild = children[1]
+
+    let cardWidth = firstChild?.getBoundingClientRect().width ?? 320
+    let gap = 24 // default to between gap-4 (16px) and gap-6 (24px)
+
+    try {
+      const computed = window.getComputedStyle(container)
+      const gapValue = parseFloat(computed.columnGap || computed.gap || '0')
+      if (!Number.isNaN(gapValue) && gapValue > 0) {
+        gap = gapValue
+      } else if (firstChild && secondChild) {
+        gap = Math.max(0, secondChild.offsetLeft - firstChild.offsetLeft - firstChild.offsetWidth)
+      }
+    } catch {
+      // noop: fallback defaults are fine SSR/older browsers
+    }
+
+    const delta = direction * (cardWidth + gap)
+    container.scrollBy({ left: delta, behavior: 'smooth' })
+    // Defer update to after scroll settles; optimistic update
+    setTimeout(updateScrollAffordances, 300)
+  }
 
   const toggleMobileAudio = () => {
     setIsMutedMobile(!isMutedMobile)
@@ -127,10 +186,12 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
         {/* Tablet & Desktop - Horizontal Scrolling Row */}
         <div className="hidden md:block">
           <div className="relative">
-            <div 
+            <div
+              ref={carouselRef}
+              onScroll={updateScrollAffordances}
               className="flex overflow-x-auto scrollbar-hide gap-4 lg:gap-6 pb-6"
-              style={{ 
-                scrollbarWidth: 'none', 
+              style={{
+                scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
                 scrollBehavior: 'smooth'
               }}
@@ -183,6 +244,34 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
                 </div>
               ))}
             </div>
+
+            {/* Arrow Controls (non-touch devices only) */}
+            {!isTouchDevice && (
+              <>
+                {canScrollLeft && (
+                  <button
+                    aria-label="Scroll left"
+                    onClick={() => scrollByOneCard(-1)}
+                    className="hidden md:flex absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 items-center justify-center rounded-full bg-black/60 hover:bg-black/75 text-white shadow-lg backdrop-blur-sm"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5 lg:w-6 lg:h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                )}
+                {canScrollRight && (
+                  <button
+                    aria-label="Scroll right"
+                    onClick={() => scrollByOneCard(1)}
+                    className="hidden md:flex absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 items-center justify-center rounded-full bg-black/60 hover:bg-black/75 text-white shadow-lg backdrop-blur-sm"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5 lg:w-6 lg:h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
+              </>
+            )}
 
             {/* Scroll Hint */}
             <div className="flex justify-center mt-4">
