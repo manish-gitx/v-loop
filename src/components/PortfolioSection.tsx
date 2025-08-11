@@ -21,7 +21,7 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
     const detectTouch = () => {
       if (typeof window === 'undefined') return false
       const isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches
-      const hasTouch = 'ontouchstart' in window || (navigator as any).maxTouchPoints > 0
+      const hasTouch = 'ontouchstart' in window || (navigator as Navigator & { maxTouchPoints?: number }).maxTouchPoints > 0
       return isCoarse || hasTouch
     }
     setIsTouchDevice(detectTouch())
@@ -50,7 +50,7 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
     const firstChild = children[0]
     const secondChild = children[1]
 
-    let cardWidth = firstChild?.getBoundingClientRect().width ?? 320
+    const cardWidth = firstChild?.getBoundingClientRect().width ?? 320
     let gap = 24 // default to between gap-4 (16px) and gap-6 (24px)
 
     try {

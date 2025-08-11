@@ -1,9 +1,13 @@
 'use client'
 
 import { AboutSectionProps } from '@/types';
+import { useAnimatedCounter } from '@/hooks';
 import '@/styles/about-animations.css';
 
 export default function AboutSection({ mousePosition }: AboutSectionProps) {
+  // Animated counters for statistics
+  const projectsCounter = useAnimatedCounter({ end: 60, duration: 2500, delay: 200 });
+
   return (
     <section id="about" className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,21 +21,34 @@ export default function AboutSection({ mousePosition }: AboutSectionProps) {
             </h2>
             
             <p className="font-body text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">
-              V-LOOP is more than a creative collective — we&apos;re a community of visionaries pushing the boundaries of visual storytelling. From intimate wedding moments to grand event spectacles, we transform ordinary captures into extraordinary memories.
+           From cinematic short-format Reels and YouTube edits to full-scale event coverage, V-Loop delivers high-impact visuals across industries. Our expertise includes self-branding videos, product shoots, ambience & interior captures, testimonials, promotional reels, and corporate storytelling. Whether it&apos;s food & beverage, fashion, or local businesses, we craft content that elevates brands and captivates audiences.
             </p>
             
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-              <div className="text-center">
-                <div className="font-heading text-2xl sm:text-3xl md:text-4xl text-[#EB9522]">500+</div>
-                <div className="font-body text-sm sm:text-base text-gray-400">Projects</div>
+            {/* Animated Statistics */}
+            <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+              <div ref={projectsCounter.ref} className="text-center group flex flex-col items-center">
+                <div className="font-heading text-4xl sm:text-5xl md:text-6xl text-[#EB9522] mb-3 group-hover:scale-105 transition-all duration-300 font-bold h-20 flex items-center justify-center">
+                  {projectsCounter.count}+
+                </div>
+                <div className="font-body text-base sm:text-lg text-gray-400 group-hover:text-[#EB9522] transition-colors duration-300 font-medium">
+                  Projects
+                </div>
               </div>
-              <div className="text-center">
-                <div className="font-heading text-2xl sm:text-3xl md:text-4xl text-[#ECA220]">50+</div>
-                <div className="font-body text-sm sm:text-base text-gray-400">Creators</div>
+              <div className="text-center group flex flex-col items-center">
+                <div className="font-heading text-4xl sm:text-5xl md:text-6xl text-[#ECA220] mb-3 group-hover:scale-105 transition-all duration-300 font-bold h-20 flex items-center justify-center">
+                  ∞
+                </div>
+                <div className="font-body text-base sm:text-lg text-gray-400 group-hover:text-[#ECA220] transition-colors duration-300 font-medium">
+                  Creations
+                </div>
               </div>
-              <div className="text-center">
-                <div className="font-heading text-2xl sm:text-3xl md:text-4xl text-[#EEBD19]">5★</div>
-                <div className="font-body text-sm sm:text-base text-gray-400">Rating</div>
+              <div className="text-center group flex flex-col items-center">
+                <div className="font-heading text-2xl sm:text-3xl md:text-4xl text-[#EEBD19] mb-3 group-hover:scale-105 transition-all duration-300 font-bold h-20 flex items-center justify-center gap-1">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <div className="font-body text-base sm:text-lg text-gray-400 group-hover:text-[#EEBD19] transition-colors duration-300 font-medium">
+                  Always Rated
+                </div>
               </div>
             </div>
           </div>
