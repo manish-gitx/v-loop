@@ -6,15 +6,15 @@ import { useDrag } from '@use-gesture/react'
 import portfolioData from '@/data/portfolio.json'
 import { PortfolioProject, PortfolioSectionProps } from '@/types'
 
-export default function PortfolioSection({ mousePosition }: PortfolioSectionProps) {
+export default function PortfolioSection({ }: PortfolioSectionProps) {
   const [projects] = useState<PortfolioProject[]>(portfolioData.projects)
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const [{ x }, api] = useSpring(() => ({ x: 0 }))
 
-  const bind = useDrag(({ active, movement: [mx], direction: [xDir], distance, cancel }) => {
-    if (active && distance > 50) {
+  const bind = useDrag(({ active, movement: [mx], direction: [xDir], cancel }) => {
+    if (active && Math.abs(mx) > 50) {
       cancel()
       const newIndex = currentIndex + (xDir > 0 ? -1 : 1)
       if (newIndex >= 0 && newIndex < projects.length) {

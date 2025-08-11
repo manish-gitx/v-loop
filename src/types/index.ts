@@ -19,21 +19,18 @@ export interface HeroSectionProps extends ComponentProps {
   scrolled: boolean;
 }
 
-export interface AboutSectionProps extends ComponentProps {}
+export type AboutSectionProps = ComponentProps;
 
 export interface PortfolioProject {
   id: number;
   title: string;
   description: string;
-  category: string;
   videoUrl: string;
-  thumbnailUrl: string;
-  featured: boolean;
 }
 
-export interface PortfolioSectionProps extends ComponentProps {}
+export type PortfolioSectionProps = ComponentProps;
 
-export interface FooterSectionProps extends ComponentProps {}
+export type FooterSectionProps = ComponentProps;
 
 // Animation duration constants
 export const ANIMATION_DURATIONS = {

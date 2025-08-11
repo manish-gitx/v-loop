@@ -25,23 +25,23 @@ export const formatCurrency = (amount: number): string => {
   }).format(amount);
 };
 
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): T => {
   let timeoutId: NodeJS.Timeout;
-  return ((...args: any[]) => {
+  return ((...args: unknown[]) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => func(...args), delay);
   }) as T;
 };
 
-export const throttle = <T extends (...args: any[]) => any>(
+export const throttle = <T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): T => {
   let lastCall = 0;
-  return ((...args: any[]) => {
+  return ((...args: unknown[]) => {
     const now = Date.now();
     if (now - lastCall >= delay) {
       lastCall = now;

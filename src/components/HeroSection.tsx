@@ -3,7 +3,7 @@
 import { HeroSectionProps } from '@/types';
 import '@/styles/hero-animations.css';
 
-export default function HeroSection({ scrolled, mousePosition }: HeroSectionProps) {
+export default function HeroSection({ mousePosition }: HeroSectionProps) {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-8 md:pt-24 md:pb-12">
       {/* Animated Background */}

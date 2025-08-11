@@ -1,8 +1,9 @@
 'use client'
 
+import Image from 'next/image';
 import { FooterSectionProps } from '@/types';
 
-export default function FooterSection({ mousePosition }: FooterSectionProps) {
+export default function FooterSection({ }: FooterSectionProps) {
   return (
     <footer className="bg-gradient-to-br from-gray-900 to-black py-16 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -10,16 +11,18 @@ export default function FooterSection({ mousePosition }: FooterSectionProps) {
           {/* Logo and Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <img
+              <Image
                 src="/V-Loop White.png"
                 alt="V-Loop Photography"
+                width={96}
+                height={96}
                 className="w-16 sm:w-20 lg:w-24 h-auto object-contain"
               />
               <div>
               </div>
             </div>
             <p className="font-body text-gray-400 text-sm sm:text-base mb-6 max-w-md">
-              Capturing life's most precious moments through our lens. We specialize in weddings, events, and portrait photography that tells your unique story.
+              Capturing life&apos;s most precious moments through our lens. We specialize in weddings, events, and portrait photography that tells your unique story.
             </p>
             
           </div>

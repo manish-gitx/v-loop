@@ -17,7 +17,7 @@ export default function AboutSection({ mousePosition }: AboutSectionProps) {
             </h2>
             
             <p className="font-body text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">
-              V-LOOP is more than a creative collective — we're a community of visionaries pushing the boundaries of visual storytelling. From intimate wedding moments to grand event spectacles, we transform ordinary captures into extraordinary memories.
+              V-LOOP is more than a creative collective — we&apos;re a community of visionaries pushing the boundaries of visual storytelling. From intimate wedding moments to grand event spectacles, we transform ordinary captures into extraordinary memories.
             </p>
             
             <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
