@@ -38,17 +38,17 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
 
         {/* Mobile - Single Card Instagram Reels Style */}
         <div className="block md:hidden">
-          <div className="relative w-full max-w-xs mx-auto">
+          <div className="relative w-full px-4">
             <animated.div
               {...bind()}
               style={{
                 x,
                 touchAction: 'pan-y',
               }}
-              className="relative w-full h-[700px] cursor-grab active:cursor-grabbing"
+              className="relative w-full max-w-sm mx-auto h-[75vh] min-h-[500px] max-h-[700px] cursor-grab active:cursor-grabbing"
             >
               <div
-                className="relative w-full h-full bg-gray-900 rounded-3xl overflow-hidden"
+                className="relative w-full h-full bg-gray-900 rounded-2xl sm:rounded-3xl overflow-hidden"
                 onClick={() => setSelectedVideo(projects[currentIndex]?.videoUrl)}
               >
                 {/* Background Video */}
@@ -63,7 +63,7 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                    <div className="text-6xl opacity-30">📸</div>
+                    <div className="text-4xl sm:text-6xl opacity-30">📸</div>
                   </div>
                 )}
                 
@@ -71,21 +71,21 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
                 <div className="absolute inset-0 bg-black/20" />
                 
                 {/* Bottom Text */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white text-xl font-bold mb-2">{projects[currentIndex]?.title}</h3>
-                  <p className="text-gray-300 text-sm">{projects[currentIndex]?.description}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                  <h3 className="text-white text-lg sm:text-xl font-bold mb-1 sm:mb-2">{projects[currentIndex]?.title}</h3>
+                  <p className="text-gray-300 text-xs sm:text-sm">{projects[currentIndex]?.description}</p>
                 </div>
               </div>
             </animated.div>
             
             {/* Dots Indicator */}
-            <div className="flex justify-center mt-6 space-x-2">
+            <div className="flex justify-center mt-4 sm:mt-6 space-x-2">
               {projects.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all ${
-                    index === currentIndex ? 'bg-[#EB9522] w-8' : 'bg-gray-600 w-2'
+                  className={`h-1.5 sm:h-2 rounded-full transition-all ${
+                    index === currentIndex ? 'bg-[#EB9522] w-6 sm:w-8' : 'bg-gray-600 w-1.5 sm:w-2'
                   }`}
                 />
               ))}
