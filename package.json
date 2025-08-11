@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@use-gesture/react": "^10.3.1",
     "autoprefixer": "^10.4.21",
     "next": "15.1.6",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-spring": "^10.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

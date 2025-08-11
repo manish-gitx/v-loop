@@ -33,39 +33,6 @@ export default function HeroSection({ scrolled, mousePosition }: HeroSectionProp
         </div>
       </div>
 
-      {/* 3D Camera Placeholder */}
-      <div 
-        className="absolute top-1/2 left-1/2 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 opacity-15 md:opacity-25 pointer-events-none z-0"
-        style={{
-          transform: `translate(-50%, -50%) translateY(${scrolled ? 0 : 20}px)`,
-          transformStyle: 'preserve-3d'
-        }}
-      >
-        <div 
-          className="w-full h-full bg-gradient-to-br from-[#EB9522]/40 to-[#EEBD19]/40 rounded-3xl backdrop-blur-lg border border-[#EB9522]/30 shadow-2xl transition-all duration-500 ease-out animate-camera-pulse"
-          style={{
-            transform: `perspective(1200px) rotateX(${mousePosition.y * 0.02}deg) rotateY(${mousePosition.x * 0.02}deg)`,
-            boxShadow: `0 25px 50px -12px rgba(235, 149, 34, 0.25)`
-          }}
-        >
-          <div className="w-full h-full flex items-center justify-center relative">
-            {/* Professional Camera Icon */}
-            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 bg-gradient-to-br from-[#EB9522] to-[#EEBD19] rounded-2xl flex items-center justify-center shadow-lg">
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-              </svg>
-            </div>
-            
-            {/* Floating Elements */}
-            <div className="absolute top-4 right-4 w-3 h-3 bg-[#EB9522] rounded-full animate-pulse"></div>
-            <div className="absolute bottom-6 left-6 w-2 h-2 bg-[#EEBD19] rounded-full animate-pulse delay-300"></div>
-            <div className="absolute top-1/2 left-4 w-1 h-1 bg-white rounded-full animate-ping delay-700"></div>
-            
-            {/* Lens Reflection Effect */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent rounded-3xl animate-lens-reflection"></div>
-          </div>
-        </div>
-      </div>
 
       {/* Hero Content */}
       <div className="relative z-10 text-center max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
