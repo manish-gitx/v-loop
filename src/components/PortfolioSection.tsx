@@ -8,8 +8,23 @@ import { PortfolioProject, PortfolioSectionProps } from '@/types'
 
 export default function PortfolioSection({ }: PortfolioSectionProps) {
   const [projects] = useState<PortfolioProject[]>(portfolioData.projects)
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMutedMobile, setIsMutedMobile] = useState(true)
+  const [activeAudioCard, setActiveAudioCard] = useState<number | null>(null)
+
+  const toggleMobileAudio = () => {
+    setIsMutedMobile(!isMutedMobile)
+  }
+
+  const toggleDesktopAudio = (projectId: number) => {
+    // If clicking the same card that's already playing audio, mute it
+    if (activeAudioCard === projectId) {
+      setActiveAudioCard(null)
+    } else {
+      // Otherwise, set this card as the only one with audio
+      setActiveAudioCard(projectId)
+    }
+  }
 
   const [{ x }, api] = useSpring(() => ({ x: 0 }))
 
@@ -49,14 +64,14 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
             >
               <div
                 className="relative w-full h-full bg-gray-900 rounded-2xl sm:rounded-3xl overflow-hidden"
-                onClick={() => setSelectedVideo(projects[currentIndex]?.videoUrl)}
+                onClick={toggleMobileAudio}
               >
                 {/* Background Video */}
                 {projects[currentIndex]?.videoUrl ? (
                   <video 
                     src={projects[currentIndex].videoUrl} 
                     className="w-full h-full object-cover"
-                    muted
+                    muted={isMutedMobile}
                     loop
                     autoPlay
                     playsInline
@@ -69,6 +84,22 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
                 
                 {/* Simple Dark Overlay */}
                 <div className="absolute inset-0 bg-black/20" />
+
+                {/* Audio Button */}
+                <div className="absolute top-4 right-4">
+                  <div className="w-10 h-10 bg-black/70 rounded-full flex items-center justify-center">
+                    {isMutedMobile ? (
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                      </svg>
+                    )}
+                  </div>
+                </div>
                 
                 {/* Bottom Text */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
@@ -108,13 +139,13 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
                 <div
                   key={project.id}
                   className="flex-shrink-0 relative w-64 lg:w-72 xl:w-80 h-[500px] lg:h-[520px] xl:h-[550px] bg-gray-900 rounded-2xl lg:rounded-3xl overflow-hidden cursor-pointer hover:scale-105 transition-transform"
-                  onClick={() => setSelectedVideo(project.videoUrl)}
+                  onClick={() => toggleDesktopAudio(project.id)}
                 >
                   {project.videoUrl ? (
                     <video 
                       src={project.videoUrl} 
                       className="w-full h-full object-cover"
-                      muted
+                      muted={activeAudioCard !== project.id} // Only unmuted if this is the active audio card
                       loop
                       autoPlay
                       playsInline
@@ -127,6 +158,22 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
                   
                   {/* Dark Overlay */}
                   <div className="absolute inset-0 bg-black/10" />
+
+                  {/* Audio Button */}
+                  <div className="absolute top-4 right-4">
+                    <div className="w-10 h-10 bg-black/70 rounded-full flex items-center justify-center">
+                      {activeAudioCard !== project.id ? (
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                        </svg>
+                      ) : (
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
                   
                   {/* Bottom Info */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
@@ -156,30 +203,6 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
           </button>
         </div>
       </div>
-
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setSelectedVideo(null)}>
-          <div className="relative max-w-4xl w-full bg-black rounded-2xl overflow-hidden">
-            <button 
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white"
-              onClick={() => setSelectedVideo(null)}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <video 
-              src={selectedVideo} 
-              controls 
-              autoPlay
-              className="w-full h-auto"
-            >
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      )}
 
       <style jsx>{`
         .scrollbar-hide {
