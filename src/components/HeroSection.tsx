@@ -50,14 +50,14 @@ export default function HeroSection({ mousePosition }: HeroSectionProps) {
         </div>
 
         {/* Tagline */}
-        <h1 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-white mb-4 sm:mb-6 md:mb-8 leading-tight font-black tracking-tight">
+        <h1 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-white mb-2 sm:mb-4 md:mb-6 leading-tight font-black tracking-tight">
           <span className="inline-block bg-gradient-to-r from-[#EB9522] via-[#ECA220] to-[#EEBD19] bg-clip-text text-transparent">
             Every Frame is a Masterpiece
           </span>
         </h1>
         
-        <p className="font-body text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-5xl mx-auto px-2 sm:px-4 font-medium tracking-wide">
-          Wedding Shoots • Event Coverage • Portfolio Creation
+        <p className="font-body text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-6xl mx-auto px-2 sm:px-4 font-medium leading-relaxed">
+          From cinematic short-format Reels and YouTube edits to full-scale event coverage, V-Loop delivers high-impact visuals across industries. Our expertise includes self-branding videos, product shoots, ambience & interior captures, testimonials, promotional reels, and corporate storytelling. Whether it&apos;s food & beverage, fashion, or local businesses, we craft content that elevates brands and captivates audiences.
         </p>
 
         {/* CTA Buttons */}
