@@ -38,15 +38,22 @@ export default function HeroSection({ mousePosition }: HeroSectionProps) {
       {/* Hero Content */}
       <div className="relative z-10 text-center max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
         {/* V-Loop Logo */}
-        <div className=" flex justify-center">
-          <Image 
-            src="/V-Loop White1.svg" 
-            alt="V-Loop" 
-            width={600}
-            height={400}
-            className="h-40 xs:h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 2xl:h-88 w-auto drop-shadow-xl"
-            priority
-          />
+        <div className="flex justify-center ">
+          <div className="relative w-full max-w-3xl px-4 sm:px-8 md:px-12">
+            <div className="w-full aspect-[2/0.8] relative">
+              <Image 
+                src="/V-Loop White1.svg" 
+                alt="V-Loop" 
+                fill={true}
+                className="drop-shadow-xl"
+                priority
+                style={{ 
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))',
+                }}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Tagline */}

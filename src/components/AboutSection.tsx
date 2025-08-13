@@ -14,7 +14,7 @@ export default function AboutSection() {
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8 md:space-y-10">
             {/* Main Heading */}
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-white leading-tight">
+            <h2 className="font-heading text-xl sm:text-xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-white leading-tight">
               We <span className="text-[#EB9522]">Edit.</span><br />
               We <span className="text-[#ECA220]">Create.</span><br />
               We <span className="text-[#EEBD19]">Dominate.</span>
