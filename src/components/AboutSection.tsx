@@ -2,14 +2,22 @@
 
 import { useAnimatedCounter } from '@/hooks';
 import '@/styles/about-animations.css';
+import { AboutSectionProps } from '@/types';
 
-export default function AboutSection() {
+export default function AboutSection({ mousePosition }: AboutSectionProps) {
   // Animated counters for statistics
   const projectsCounter = useAnimatedCounter({ end: 60, duration: 2500, delay: 200 });
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+      {/* Very subtle mouse-based gradient overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at ${mousePosition.x * 0.05}% ${mousePosition.y * 0.05}%, #EB9522, transparent 70%)`
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 xl:gap-24 items-start lg:items-center">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8 md:space-y-10">

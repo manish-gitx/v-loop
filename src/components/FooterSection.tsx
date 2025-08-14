@@ -3,10 +3,17 @@
 import Image from 'next/image';
 import { FooterSectionProps } from '@/types';
 
-export default function FooterSection({ }: FooterSectionProps) {
+export default function FooterSection({ mousePosition }: FooterSectionProps) {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-black py-16 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gradient-to-br from-gray-900 to-black py-16 border-t border-gray-800 relative overflow-hidden">
+      {/* Very subtle mouse-based lighting */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at ${mousePosition.x * 0.03}% ${mousePosition.y * 0.03}%, #EEBD19, transparent 80%)`
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo and Brand */}
           <div className="lg:col-span-2">

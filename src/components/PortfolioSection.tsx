@@ -6,7 +6,7 @@ import { useDrag } from '@use-gesture/react'
 import portfolioData from '@/data/portfolio.json'
 import { PortfolioProject, PortfolioSectionProps } from '@/types'
 
-export default function PortfolioSection({ }: PortfolioSectionProps) {
+export default function PortfolioSection({ mousePosition }: PortfolioSectionProps) {
   const [projects] = useState<PortfolioProject[]>(portfolioData.projects)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMutedMobile, setIsMutedMobile] = useState(true)
@@ -99,8 +99,15 @@ export default function PortfolioSection({ }: PortfolioSectionProps) {
   })
 
   return (
-    <section id="portfolio" className="py-16 md:py-24 lg:py-32 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="py-16 md:py-24 lg:py-32 bg-black relative overflow-hidden">
+      {/* Very subtle mouse-based ambient lighting */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at ${mousePosition.x * 0.04}% ${mousePosition.y * 0.04}%, #ECA220, transparent 75%)`
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-4 md:mb-6">
             Our <span className="text-[#EB9522]">Masterpieces</span>
