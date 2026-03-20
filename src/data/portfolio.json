@@ -2,57 +2,57 @@
   "projects": [
     {
       "id": 1,
-      "title": "Ethereal Wedding Dreams",
-      "description": "Capturing love in its purest form",
-      "videoUrl": "/k2.mp4"
+      "title": "Diwali Festival",
+      "description": "Celebrating the festival of lights with Madhuram Tiffins",
+      "videoUrl": "/videos/diwali-festival.mp4"
     },
     {
       "id": 2,
-      "title": "Corporate Excellence",
-      "description": "Professional event documentation",
-      "videoUrl": "/k2.mp4"
+      "title": "Ellipaya Karam",
+      "description": "The love story behind Hyderabad's iconic Biryani",
+      "videoUrl": "/videos/ellipaya-karam.mp4"
     },
     {
       "id": 3,
-      "title": "Portrait Mastery",
-      "description": "Individual stories told through lens",
-      "videoUrl": "/k2.mp4"
+      "title": "Madhuram Dosa",
+      "description": "Soft, fluffy, melt-in-your-mouth breakfast goodness",
+      "videoUrl": "/videos/madhuram-dosa.mp4"
     },
     {
       "id": 4,
-      "title": "Creative Vision",
-      "description": "Artistic expressions captured",
-      "videoUrl": "/k2.mp4"
+      "title": "Influencer Content",
+      "description": "Creators, chaos, and cameras — behind the scenes",
+      "videoUrl": "/videos/influencer-content.mp4"
     },
     {
       "id": 5,
-      "title": "Golden Hour Romance",
-      "description": "Sunset wedding ceremony",
-      "videoUrl": "/k2.mp4"
+      "title": "Radha Krishna Silks",
+      "description": "Grand opening wrapped in timeless elegance",
+      "videoUrl": "/videos/radha-krishna-silks.mp4"
     },
     {
       "id": 6,
-      "title": "Fashion Forward",
-      "description": "High-end fashion photography",
-      "videoUrl": "/k2.mp4"
+      "title": "BigBull Pub",
+      "description": "Nightlife vibes and pub energy",
+      "videoUrl": "/videos/bigbull-pub.mp4"
     },
     {
       "id": 7,
-      "title": "Music Festival Vibes",
-      "description": "Energy and excitement captured",
-      "videoUrl": "/k2.mp4"
+      "title": "Mexican Kitchen",
+      "description": "Cheese melting, tacos flipping — Hyderabad's hottest Mexican spot",
+      "videoUrl": "/videos/mexican-kitchen.mp4"
     },
     {
       "id": 8,
       "title": "Artistic Abstracts",
       "description": "Creative conceptual photography",
-      "videoUrl": "/k2.mp4"
+      "videoUrl": "/videos/diwali-festival.mp4"
     },
     {
       "id": 9,
       "title": "Urban Exploration",
       "description": "City life through the lens",
-      "videoUrl": "/k2.mp4"
+      "videoUrl": "/videos/influencer-content.mp4"
     }
   ]
 }
