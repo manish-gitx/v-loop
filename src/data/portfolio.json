@@ -4,55 +4,43 @@
       "id": 1,
       "title": "Diwali Festival",
       "description": "Celebrating the festival of lights with Madhuram Tiffins",
-      "videoUrl": "/videos/diwali-festival.mp4"
+      "videoUrl": "https://stream.mux.com/YSqTcfTuAsIbk7gKJWs9m9OT3FIIlT6SLWSPBNQhKH4.m3u8"
     },
     {
       "id": 2,
       "title": "Ellipaya Karam",
       "description": "The love story behind Hyderabad's iconic Biryani",
-      "videoUrl": "/videos/ellipaya-karam.mp4"
+      "videoUrl": "https://stream.mux.com/unzcrh3p0000pDjFNnyIxZ02E9B00LSfPwjXyF7ahzy4Xu4.m3u8"
     },
     {
       "id": 3,
       "title": "Madhuram Dosa",
       "description": "Soft, fluffy, melt-in-your-mouth breakfast goodness",
-      "videoUrl": "/videos/madhuram-dosa.mp4"
+      "videoUrl": "https://stream.mux.com/E1byKdcfD0002uJ52QEcw00Qwqv01x2VheJQ01ybyMbGmsNE.m3u8"
     },
     {
       "id": 4,
       "title": "Influencer Content",
       "description": "Creators, chaos, and cameras — behind the scenes",
-      "videoUrl": "/videos/influencer-content.mp4"
+      "videoUrl": "https://stream.mux.com/hchiY38003UCfao1MEtlPIBrxg3lRaJydMTtbjD02eB00M.m3u8"
     },
     {
       "id": 5,
       "title": "Radha Krishna Silks",
       "description": "Grand opening wrapped in timeless elegance",
-      "videoUrl": "/videos/radha-krishna-silks.mp4"
+      "videoUrl": "https://stream.mux.com/EJii100Gdlsus2Muhhp00007febsKlZ4gobCALfX6Mp7U8.m3u8"
     },
     {
       "id": 6,
       "title": "BigBull Pub",
       "description": "Nightlife vibes and pub energy",
-      "videoUrl": "/videos/bigbull-pub.mp4"
+      "videoUrl": "https://stream.mux.com/600TC013V9ZppWMfZXaW9w01XdxdO7jP7UXv1q6fdBVWbk.m3u8"
     },
     {
       "id": 7,
       "title": "Mexican Kitchen",
       "description": "Cheese melting, tacos flipping — Hyderabad's hottest Mexican spot",
-      "videoUrl": "/videos/mexican-kitchen.mp4"
-    },
-    {
-      "id": 8,
-      "title": "Artistic Abstracts",
-      "description": "Creative conceptual photography",
-      "videoUrl": "/videos/diwali-festival.mp4"
-    },
-    {
-      "id": 9,
-      "title": "Urban Exploration",
-      "description": "City life through the lens",
-      "videoUrl": "/videos/influencer-content.mp4"
+      "videoUrl": "https://stream.mux.com/ENJMq9kj17jf02MwKL802FriU3cEopDf29r7QyEtBXNxY.m3u8"
     }
   ]
 }

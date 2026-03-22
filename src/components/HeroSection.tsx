@@ -4,6 +4,18 @@ import Image from 'next/image';
 import { HeroSectionProps } from '@/types';
 import '@/styles/hero-animations.css';
 
+// Pre-computed stable particle values to avoid SSR/client hydration mismatch
+const PARTICLES = Array.from({ length: 30 }, (_, i) => {
+  const seed = (i * 9301 + 49297) % 233280;
+  const rand = (offset: number) => ((seed * (offset + 1) * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+  return {
+    left: `${rand(0) * 100}%`,
+    top: `${rand(1) * 100}%`,
+    animationDelay: `${rand(2) * 3}s`,
+    animationDuration: `${2 + rand(3) * 3}s`,
+  };
+});
+
 export default function HeroSection({ mousePosition }: HeroSectionProps) {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-8 md:pt-24 md:pb-12">
@@ -19,16 +31,11 @@ export default function HeroSection({ mousePosition }: HeroSectionProps) {
         
         {/* Floating Particles */}
         <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
+          {PARTICLES.map((p, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-[#EB9522] rounded-full opacity-40 md:opacity-60 animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
+              style={p}
             />
           ))}
         </div>

@@ -3,8 +3,34 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
+import Hls from 'hls.js'
 import portfolioData from '@/data/portfolio.json'
 import { PortfolioProject, PortfolioSectionProps } from '@/types'
+
+interface HlsVideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
+  src: string
+}
+
+function HlsVideo({ src, ...props }: HlsVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !src) return
+
+    if (Hls.isSupported()) {
+      const hls = new Hls({ autoStartLoad: true, startLevel: -1 })
+      hls.loadSource(src)
+      hls.attachMedia(video)
+      return () => hls.destroy()
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      // Safari native HLS
+      video.src = src
+    }
+  }, [src])
+
+  return <video ref={videoRef} {...props} />
+}
 
 export default function PortfolioSection({ mousePosition }: PortfolioSectionProps) {
   const [projects] = useState<PortfolioProject[]>(portfolioData.projects)
@@ -16,6 +42,8 @@ export default function PortfolioSection({ mousePosition }: PortfolioSectionProp
   const [canScrollRight, setCanScrollRight] = useState(false)
 
   const carouselRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const activeAudioCardRef = useRef<number | null>(null)
 
   useEffect(() => {
     const detectTouch = () => {
@@ -33,6 +61,19 @@ export default function PortfolioSection({ mousePosition }: PortfolioSectionProp
     const { scrollLeft, scrollWidth, clientWidth } = container
     setCanScrollLeft(scrollLeft > 0)
     setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1)
+
+    // Mute desktop card if it scrolled out of view
+    if (activeAudioCardRef.current !== null) {
+      const cardIndex = projects.findIndex(p => p.id === activeAudioCardRef.current)
+      const card = container.children[cardIndex] as HTMLElement
+      if (card) {
+        const cardLeft = card.offsetLeft - scrollLeft
+        const cardRight = cardLeft + card.offsetWidth
+        if (cardRight < 0 || cardLeft > clientWidth) {
+          setActiveAudioCard(null)
+        }
+      }
+    }
   }
 
   useEffect(() => {
@@ -40,6 +81,24 @@ export default function PortfolioSection({ mousePosition }: PortfolioSectionProp
     const handleResize = () => updateScrollAffordances()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Keep ref in sync so scroll callbacks don't have stale closures
+  useEffect(() => { activeAudioCardRef.current = activeAudioCard }, [activeAudioCard])
+
+  // Mute everything when section scrolls out of view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsMutedMobile(true)
+          setActiveAudioCard(null)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
   }, [])
 
   const scrollByOneCard = (direction: -1 | 1) => {
@@ -99,7 +158,7 @@ export default function PortfolioSection({ mousePosition }: PortfolioSectionProp
   })
 
   return (
-    <section id="portfolio" className="py-16 md:py-24 lg:py-32 bg-black relative overflow-hidden">
+    <section ref={sectionRef} id="portfolio" className="py-16 md:py-24 lg:py-32 bg-black relative overflow-hidden">
       {/* Very subtle mouse-based ambient lighting */}
       <div 
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -134,8 +193,8 @@ export default function PortfolioSection({ mousePosition }: PortfolioSectionProp
               >
                 {/* Background Video */}
                 {projects[currentIndex]?.videoUrl ? (
-                  <video 
-                    src={projects[currentIndex].videoUrl} 
+                  <HlsVideo
+                    src={projects[currentIndex].videoUrl}
                     className="w-full h-full object-cover"
                     muted={isMutedMobile}
                     loop
@@ -210,10 +269,10 @@ export default function PortfolioSection({ mousePosition }: PortfolioSectionProp
                   onClick={() => toggleDesktopAudio(project.id)}
                 >
                   {project.videoUrl ? (
-                    <video 
-                      src={project.videoUrl} 
+                    <HlsVideo
+                      src={project.videoUrl}
                       className="w-full h-full object-cover"
-                      muted={activeAudioCard !== project.id} // Only unmuted if this is the active audio card
+                      muted={activeAudioCard !== project.id}
                       loop
                       autoPlay
                       playsInline

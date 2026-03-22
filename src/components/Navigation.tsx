@@ -6,14 +6,14 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled }: Navi
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/50 backdrop-blur-md border-b border-[#EB9522]/20' : 'bg-black/30 backdrop-blur-md border-b border-[#EB9522]/10'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
+        <div className="flex justify-between items-center h-20 md:h-24">
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="">
-              <img 
-                src="/V-Loop White.png" 
-                alt="V-LOOP Logo" 
-                className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 hover:scale-105 transition-all duration-300 ease-in-out filter brightness-100 hover:brightness-110 object-contain" 
+              <img
+                src="/V-Loop White.png"
+                alt="V-LOOP Logo"
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 hover:scale-105 transition-all duration-300 ease-in-out filter brightness-100 hover:brightness-110 object-contain"
               />
             </div>
           </div>
