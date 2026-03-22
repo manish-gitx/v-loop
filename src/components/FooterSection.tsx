@@ -29,7 +29,7 @@ export default function FooterSection({ mousePosition }: FooterSectionProps) {
               </div>
             </div>
             <p className="font-body text-gray-400 text-sm sm:text-base mb-6 max-w-md">
-              Capturing life&apos;s most precious moments through our lens. We specialize in weddings, events, and portrait photography that tells your unique story.
+              Capturing life&apos;s most precious moments through our lens. We specialize in events, and portrait photography that tells your unique story.
             </p>
             
           </div>
@@ -38,16 +38,26 @@ export default function FooterSection({ mousePosition }: FooterSectionProps) {
           <div>
             <h4 className="font-heading text-lg  text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['Home', 'About', 'Portfolio', 'Services', 'Contact'].map((link) => (
-                <li key={link}>
+              {[{ label: 'Home', href: '#hero' }, { label: 'About', href: '#about' }, { label: 'Portfolio', href: '#portfolio' }].map(({ label, href }) => (
+                <li key={label}>
                   <a
-                    href={`#${link.toLowerCase()}`}
+                    href={href}
                     className="font-body text-gray-400 hover:text-[#EB9522] transition-colors text-sm"
                   >
-                    {link}
+                    {label}
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://wa.me/917330722605?text=Hi%2C%20I%27m%20interested%20in%20working%20with%20V-Loop!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-gray-400 hover:text-[#EB9522] transition-colors text-sm"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -58,17 +68,13 @@ export default function FooterSection({ mousePosition }: FooterSectionProps) {
               <div className="flex items-start space-x-3">
                 <div className="w-5 h-5 text-[#EB9522] mt-0.5">📍</div>
                 <p className="font-body text-gray-400 text-sm">
-                  123 Photography Street<br />
-                  Creative District, CD 12345
+                  Madhapur<br />
+                  Hyderabad, 500001
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-5 h-5 text-[#EB9522]">📞</div>
-                <p className="font-body text-gray-400 text-sm">+1 (555) 123-4567</p>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-5 h-5 text-[#EB9522]">✉️</div>
-                <p className="font-body text-gray-400 text-sm">hello@vloop.com</p>
+                <p className="font-body text-gray-400 text-sm">+91 7330722605</p>
               </div>
             </div>
           </div>

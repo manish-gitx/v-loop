@@ -56,15 +56,14 @@ export const PORTFOLIO_CATEGORIES = [
 ] as const;
 
 export const NAVIGATION_LINKS = [
-  { href: '#home', label: 'Home' },
+  { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#portfolio', label: 'Portfolio' },
   { href: '#contact', label: 'Contact' },
 ] as const;
 
 export const SOCIAL_LINKS = [
-  { href: 'https://instagram.com/vloop', label: 'Instagram', icon: 'instagram' },
+  { href: 'https://www.instagram.com/v.loop_official/', label: 'Instagram', icon: 'instagram' },
   { href: 'https://facebook.com/vloop', label: 'Facebook', icon: 'facebook' },
   { href: 'https://youtube.com/vloop', label: 'YouTube', icon: 'youtube' },
-  { href: 'mailto:hello@vloop.com', label: 'Email', icon: 'email' },
 ] as const;

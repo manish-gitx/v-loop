@@ -20,13 +20,10 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled }: Navi
           
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            <a href="#home" className="font-body text-white hover:text-[#EB9522] transition-colors">Home</a>
+            <a href="#hero" className="font-body text-white hover:text-[#EB9522] transition-colors">Home</a>
             <a href="#about" className="font-body text-white hover:text-[#EB9522] transition-colors">About</a>
             <a href="#portfolio" className="font-body text-white hover:text-[#EB9522] transition-colors">Portfolio</a>
-            <a href="#contact" className="font-body text-white hover:text-[#EB9522] transition-colors">Contact</a>
-            <button className="bg-gradient-to-r from-[#EB9522] to-[#EEBD19] text-black font-body px-4 py-2 md:px-6 md:py-3 rounded-full hover:shadow-lg hover:shadow-[#EB9522]/30 transition-all transform hover:scale-105">
-              Join the Collective
-            </button>
+            <a href="https://wa.me/917330722605?text=Hi%2C%20I%27m%20interested%20in%20working%20with%20V-Loop!" target="_blank" rel="noopener noreferrer" className="font-body text-white hover:text-[#EB9522] transition-colors">Contact</a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -43,13 +40,10 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled }: Navi
         {/* Mobile Menu */}
         <div className={`lg:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
           <div className="pb-4 space-y-3">
-            <a href="#home" className="block font-body text-white hover:text-[#EB9522] transition-colors py-2">Home</a>
+            <a href="#hero" className="block font-body text-white hover:text-[#EB9522] transition-colors py-2">Home</a>
             <a href="#about" className="block font-body text-white hover:text-[#EB9522] transition-colors py-2">About</a>
             <a href="#portfolio" className="block font-body text-white hover:text-[#EB9522] transition-colors py-2">Portfolio</a>
-            <a href="#contact" className="block font-body text-white hover:text-[#EB9522] transition-colors py-2">Contact</a>
-            <button className="w-full bg-gradient-to-r from-[#EB9522] to-[#EEBD19] text-black font-body px-6 py-3 rounded-full hover:shadow-lg hover:shadow-[#EB9522]/30 transition-all mt-4">
-              Join the Collective
-            </button>
+            <a href="https://wa.me/917330722605?text=Hi%2C%20I%27m%20interested%20in%20working%20with%20V-Loop!" target="_blank" rel="noopener noreferrer" className="block font-body text-white hover:text-[#EB9522] transition-colors py-2">Contact</a>
           </div>
         </div>
       </div>
