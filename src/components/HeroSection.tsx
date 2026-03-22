@@ -4,18 +4,6 @@ import Image from 'next/image';
 import { HeroSectionProps } from '@/types';
 import '@/styles/hero-animations.css';
 
-// Pre-computed stable particle values to avoid SSR/client hydration mismatch
-const PARTICLES = Array.from({ length: 30 }, (_, i) => {
-  const seed = (i * 9301 + 49297) % 233280;
-  const rand = (offset: number) => ((seed * (offset + 1) * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
-  return {
-    left: `${rand(0) * 100}%`,
-    top: `${rand(1) * 100}%`,
-    animationDelay: `${rand(2) * 3}s`,
-    animationDuration: `${2 + rand(3) * 3}s`,
-  };
-});
-
 export default function HeroSection({ mousePosition }: HeroSectionProps) {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-8 md:pt-24 md:pb-12">
@@ -31,11 +19,16 @@ export default function HeroSection({ mousePosition }: HeroSectionProps) {
         
         {/* Floating Particles */}
         <div className="absolute inset-0">
-          {PARTICLES.map((p, i) => (
+          {[...Array(30)].map((_, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-[#EB9522] rounded-full opacity-40 md:opacity-60 animate-pulse"
-              style={p}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 3}s`
+              }}
             />
           ))}
         </div>
@@ -46,15 +39,15 @@ export default function HeroSection({ mousePosition }: HeroSectionProps) {
       <div className="relative z-10 text-center max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
         {/* V-Loop Logo */}
         <div className="flex justify-center ">
-          <div className="relative w-full max-w-3xl px-4 sm:px-8 md:px-12">
-            <div className="w-full aspect-[2/0.8] relative">
-              <Image 
-                src="/V-Loop White1.svg" 
-                alt="V-Loop" 
+        <div className="relative w-full max-w-full sm:max-w-3xl px-0 sm:px-8 md:px-12">
+              <div className="w-full h-52 sm:h-auto sm:aspect-[2/0.8] relative">
+              <Image
+                src="/V-Loop White1.svg"
+                alt="V-Loop"
                 fill={true}
-                className="drop-shadow-xl"
+                className="drop-shadow-xl scale-[1.8] sm:scale-[1.6] md:scale-[1.4] lg:scale-[1.2] xl:scale-100 origin-center"
                 priority
-                style={{ 
+                style={{
                   objectFit: 'contain',
                   filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))',
                 }}
